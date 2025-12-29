@@ -20,14 +20,14 @@ class Command:
     def update(self):
         act = (self.sync_v or self.sync_h) and groups_ok()
         if act:
-            ev = 'on_scroll,on_state'
+            act = PROC_EVENTS_SUB
             msg_status('Sync Scroll: active')
             log('active')
         else:
-            ev = ''
+            act = PROC_EVENTS_UNSUB
             msg_status('Sync Scroll: inactive')
             log('inactive')
-        app_proc(PROC_SET_EVENTS,__name__+';'+ev+';;')
+        app_proc(act, 'cuda_sync_scroll;on_scroll,on_state;;')
 
     def toggle_vert(self):
         if not groups_ok():
