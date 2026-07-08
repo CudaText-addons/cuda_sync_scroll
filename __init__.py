@@ -72,12 +72,12 @@ class Command:
         if self.sync_v:
             if pos_v<max_v and pos_v<max2_v:
                 log('sync v: '+ed_self.get_filename())
-                e.set_prop(PROP_SCROLL_VERT_SMOOTH, pos_v)
+                e.set_prop(PROP_SCROLL_VERT_INFO, {'smooth_pos': pos_v})
 
         if self.sync_h:
             if pos_h<max_h and pos_h<max2_h:
                 log('sync h: '+ed_self.get_filename())
-                e.set_prop(PROP_SCROLL_HORZ_SMOOTH, pos_h)
+                e.set_prop(PROP_SCROLL_HORZ_INFO, {'smooth_pos': pos_h})
 
         log('repaint: '+ed_self.get_filename())
         e.cmd(cmds.cmd_RepaintEditor)
